@@ -1,13 +1,20 @@
+import os
+import re
 from os import environ
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
 from Bard import Chatbot
+from dotenv import load_dotenv
+from keep_alive import keep_alive
+keep_alive()
 
-# get config
-token = "......."
+message_history = {}
 
-# init telegram bot
-bot_token = "......."
+load_dotenv()
+
+token = os.getenv("BARD_KEY")
+bot_token = os.getenv("BOT_TOKEN")
+
 bot = AsyncTeleBot(bot_token, parse_mode="MARKDOWN")
 
 # init chatbot
